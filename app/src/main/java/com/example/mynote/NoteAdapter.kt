@@ -30,7 +30,9 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteAdapterHolder>() {
         return  notes.size
     }
 
-
+    fun getNoteAt(position: Int): Note {
+        return notes[position]!!
+    }
 
     inner class NoteAdapterHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 

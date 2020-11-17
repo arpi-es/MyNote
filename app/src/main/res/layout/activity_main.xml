@@ -10,8 +10,16 @@
         android:id="@+id/recycler_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/note_item"
-        android:background="#0A0F30"/>
+        android:background="#0A0F30"
+        tools:listitem="@layout/note_item" />
 
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_add_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="36dp"
+        />
+    
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
