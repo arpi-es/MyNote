@@ -13,9 +13,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity()  {
+
+    companion object {
+        const val ADD_NOTE_REQUEST = 1
+        const val EDIT_NOTE_REQUEST = 2
+    }
+
 
     private lateinit var mainViewModel: MainViewModel
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         recycler_main.layoutManager = LinearLayoutManager(this)
 
         val adapter = NoteAdapter()
+
 
         recycler_main.adapter = adapter
 
@@ -34,15 +43,34 @@ class MainActivity : AppCompatActivity() {
 
         })
 
+        adapter.setOnItemClickListener(object : OnItemClickListener {
+            override fun onItemClick(note: Note) {
+                val intent = Intent(baseContext, AddEditNoteActivity::class.java)
+                intent.putExtra(AddEditNoteActivity.EXTRA_ID, note.id)
+                intent.putExtra(AddEditNoteActivity.EXTRA_TITLE, note.title)
+                intent.putExtra(AddEditNoteActivity.EXTRA_DESCRIPTION, note.description)
+                intent.putExtra(AddEditNoteActivity.EXTRA_PRIORITY, note.priority)
+
+                startActivityForResult(intent, EDIT_NOTE_REQUEST)
+            }
+        })
+
+
+
+
+
+
+
 
 
         btn_add_note.setOnClickListener {
-            startActivity(Intent(this, AddNoteActivity::class.java))
+            startActivity(Intent(this, AddEditNoteActivity::class.java))
         }
 
 
 
-        ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT.or(ItemTouchHelper.RIGHT)) {
+        ItemTouchHelper(object :
+            ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT.or(ItemTouchHelper.RIGHT)) {
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
@@ -68,7 +96,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        return when( item.itemId) {
+        return when (item.itemId) {
             R.id.deleteall -> {
                 mainViewModel.deleteAllNotes()
                 Toast.makeText(baseContext, "All Note Deleted", Toast.LENGTH_SHORT).show()
@@ -79,6 +107,8 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+
 
 
 }
