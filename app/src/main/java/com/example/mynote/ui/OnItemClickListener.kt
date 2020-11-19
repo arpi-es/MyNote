@@ -1,4 +1,6 @@
-package com.example.mynote
+package com.example.mynote.ui
+
+import com.example.mynote.data.Note
 
 interface OnItemClickListener {
 

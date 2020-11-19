@@ -1,9 +1,10 @@
-package com.example.mynote
+package com.example.mynote.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
+import com.example.mynote.data.Note
+import com.example.mynote.data.NoteRepository
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 

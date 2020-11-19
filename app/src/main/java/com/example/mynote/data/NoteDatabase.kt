@@ -1,8 +1,7 @@
-package com.example.mynote
+package com.example.mynote.data
 
 import android.content.Context
 import android.os.AsyncTask
-import androidx.loader.content.AsyncTaskLoader
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase

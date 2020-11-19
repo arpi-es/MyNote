@@ -1,7 +1,8 @@
-package com.example.mynote
+package com.example.mynote.ui
 
 
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -11,29 +12,26 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mynote.*
+import com.example.mynote.adapter.NoteAdapter
+import com.example.mynote.data.Note
+import com.example.mynote.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity()  {
 
-    companion object {
-        const val ADD_NOTE_REQUEST = 1
-        const val EDIT_NOTE_REQUEST = 2
-    }
-
-
     private lateinit var mainViewModel: MainViewModel
 
-
+    private var adapter: NoteAdapter = NoteAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        supportActionBar!!.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.colorPrimaryDark)))
+
+
         recycler_main.layoutManager = LinearLayoutManager(this)
-
-        val adapter = NoteAdapter()
-
-
         recycler_main.adapter = adapter
 
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
@@ -50,17 +48,11 @@ class MainActivity : AppCompatActivity()  {
                 intent.putExtra(AddEditNoteActivity.EXTRA_TITLE, note.title)
                 intent.putExtra(AddEditNoteActivity.EXTRA_DESCRIPTION, note.description)
                 intent.putExtra(AddEditNoteActivity.EXTRA_PRIORITY, note.priority)
-
-                startActivityForResult(intent, EDIT_NOTE_REQUEST)
+                startActivity(intent)
             }
         })
 
-
-
-
-
-
-
+        setItemTouchHelper()
 
 
         btn_add_note.setOnClickListener {
@@ -68,14 +60,13 @@ class MainActivity : AppCompatActivity()  {
         }
 
 
+    }
 
+
+    private fun setItemTouchHelper(){
         ItemTouchHelper(object :
             ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT.or(ItemTouchHelper.RIGHT)) {
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
+            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
                 return false
             }
 
@@ -83,14 +74,14 @@ class MainActivity : AppCompatActivity()  {
                 mainViewModel.delete(adapter.getNoteAt(viewHolder.adapterPosition))
                 Toast.makeText(baseContext, "Note Deleted!", Toast.LENGTH_SHORT).show()
             }
+
         }
         ).attachToRecyclerView(recycler_main)
-
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
+
         return true
     }
 

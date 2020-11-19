@@ -1,4 +1,4 @@
-package com.example.mynote
+package com.example.mynote.data
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -18,7 +18,7 @@ class NoteRepository(application: Application){
     }
 
 
-    fun insertNote(note:Note){
+    fun insertNote(note: Note){
         CoroutineScope(Dispatchers.IO).launch {
             noteDao.insert(note)
         }

@@ -1,50 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="8dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginRight="8dp"
-    android:orientation="vertical">
+    <data>
 
-    <RelativeLayout
+        <variable
+            name="note"
+            type="com.example.mynote.data.Note" />
+
+<!--        <variable-->
+<!--            name="callback"-->
+<!--            type="com.example.project.batman.view.callback.MovieClickCallback" />-->
+
+    </data>
+
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#B8BEE3"
-        android:padding="16dp">
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txt_priority"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:text="1"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:background="@color/colorPrimaryDark"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/txt_priority"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@{note.priority.toString()}"
+                android:textColor="@color/colorPrimaryText"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
 
-        <TextView
-            android:id="@+id/txt_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@id/txt_priority"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="Title"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/txt_priority"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{note.title}"
+                android:textColor="@color/colorPrimaryText"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
 
-        <TextView
-            android:id="@+id/txt_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_title"
-            android:text="Description" />
+            <TextView
+                android:id="@+id/txt_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_title"
+                android:textColor="@color/colorSecondaryText"
+                android:text="@{note.description}" />
 
-    </RelativeLayout>
+        </RelativeLayout>
 
 
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
+</layout>

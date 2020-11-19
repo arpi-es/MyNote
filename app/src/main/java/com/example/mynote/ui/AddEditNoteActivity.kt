@@ -1,14 +1,16 @@
-package com.example.mynote
+package com.example.mynote.ui
 
-import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.example.mynote.viewmodel.MainViewModel
+import com.example.mynote.data.Note
+import com.example.mynote.R
 import kotlinx.android.synthetic.main.activity_add_note.*
-import kotlinx.android.synthetic.main.note_item.*
 
 class AddEditNoteActivity : AppCompatActivity() {
 
@@ -26,11 +28,14 @@ class AddEditNoteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_note)
 
+
+
         numpicker_priority.minValue = 1
         numpicker_priority.maxValue = 10
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_close)
+        supportActionBar!!.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.colorPrimaryDark)))
 
         if (intent.hasExtra(EXTRA_ID)) {
             title = "Edit Note"
@@ -40,7 +45,6 @@ class AddEditNoteActivity : AppCompatActivity() {
         } else {
             title = "Add Note"
         }
-
 
     }
 
@@ -60,9 +64,9 @@ class AddEditNoteActivity : AppCompatActivity() {
 
         if (intent.hasExtra(EXTRA_ID)) {
             val note = Note(title, desc, priority)
-            val id = intent?.getIntExtra(AddEditNoteActivity.EXTRA_ID, -1)
+            val id = intent?.getIntExtra(EXTRA_ID, -1)
             if (id != -1) {
-                note.id = intent.getIntExtra(AddEditNoteActivity.EXTRA_ID, -1)
+                note.id = intent.getIntExtra(EXTRA_ID, -1)
                 mainViewModel.update(note)
             }
 
