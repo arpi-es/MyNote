@@ -6,7 +6,7 @@
 
         <variable
             name="note"
-            type="com.example.mynote.data.Note" />
+            type="com.example.mynote.service.model.Note" />
 
 <!--        <variable-->
 <!--            name="callback"-->

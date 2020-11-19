@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.AddEditNoteActivity"
-            android:parentActivityName=".ui.MainActivity">
+        <activity android:name=".view.ui.AddEditNoteActivity"
+            android:parentActivityName=".view.ui.MainActivity">
         </activity>
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".view.ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

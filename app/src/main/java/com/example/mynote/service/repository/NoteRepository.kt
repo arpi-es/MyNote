@@ -1,7 +1,8 @@
-package com.example.mynote.data
+package com.example.mynote.service.repository
 
 import android.app.Application
 import androidx.lifecycle.LiveData
+import com.example.mynote.service.model.Note
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

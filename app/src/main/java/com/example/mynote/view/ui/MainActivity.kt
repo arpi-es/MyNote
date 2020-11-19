@@ -1,4 +1,4 @@
-package com.example.mynote.ui
+package com.example.mynote.view.ui
 
 
 import android.content.Intent
@@ -13,8 +13,9 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mynote.*
-import com.example.mynote.adapter.NoteAdapter
-import com.example.mynote.data.Note
+import com.example.mynote.view.adapter.NoteAdapter
+import com.example.mynote.service.model.Note
+import com.example.mynote.view.callback.OnItemClickListener
 import com.example.mynote.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 

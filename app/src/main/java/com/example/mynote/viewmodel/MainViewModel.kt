@@ -3,8 +3,8 @@ package com.example.mynote.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.mynote.data.Note
-import com.example.mynote.data.NoteRepository
+import com.example.mynote.service.model.Note
+import com.example.mynote.service.repository.NoteRepository
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 

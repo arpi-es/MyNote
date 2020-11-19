@@ -1,12 +1,12 @@
-package com.example.mynote.adapter
+package com.example.mynote.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mynote.ui.OnItemClickListener
+import com.example.mynote.view.callback.OnItemClickListener
 import com.example.mynote.R
-import com.example.mynote.data.Note
+import com.example.mynote.service.model.Note
 import com.example.mynote.databinding.NoteItemBinding
 
 class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteAdapterHolder>()  {

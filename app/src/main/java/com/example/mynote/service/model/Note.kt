@@ -1,4 +1,4 @@
-package com.example.mynote.data
+package com.example.mynote.service.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

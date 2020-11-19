@@ -1,4 +1,4 @@
-package com.example.mynote.ui
+package com.example.mynote.view.ui
 
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +8,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.mynote.viewmodel.MainViewModel
-import com.example.mynote.data.Note
+import com.example.mynote.service.model.Note
 import com.example.mynote.R
 import kotlinx.android.synthetic.main.activity_add_note.*
 
